@@ -1,0 +1,71 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< com.example:aeron-producer >---------------------
+[INFO] Building aeron-producer 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.2.1:run (default-cli) > test-compile @ aeron-producer >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ aeron-producer ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ aeron-producer ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ aeron-producer ---
+[INFO] skip non existing resourceDirectory /Users/yyordanov/dev/claude-training/aeron-producer/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ aeron-producer ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] <<< spring-boot:3.2.1:run (default-cli) < test-compile @ aeron-producer <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.2.1:run (default-cli) @ aeron-producer ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.1)
+
+2025-07-29T12:26:19.179+02:00  INFO 52480 --- [aeron-producer] [           main] c.e.a.AeronProducerApplication           : Starting AeronProducerApplication using Java 21 with PID 52480 (/Users/yyordanov/dev/claude-training/aeron-producer/target/classes started by yyordanov in /Users/yyordanov/dev/claude-training/aeron-producer)
+2025-07-29T12:26:19.179+02:00 DEBUG 52480 --- [aeron-producer] [           main] c.e.a.AeronProducerApplication           : Running with Spring Boot v3.2.1, Spring v6.1.2
+2025-07-29T12:26:19.180+02:00  INFO 52480 --- [aeron-producer] [           main] c.e.a.AeronProducerApplication           : No active profile set, falling back to 1 default profile: "default"
+2025-07-29T12:26:19.641+02:00  INFO 52480 --- [aeron-producer] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-29T12:26:19.645+02:00  INFO 52480 --- [aeron-producer] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-29T12:26:19.645+02:00  INFO 52480 --- [aeron-producer] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.17]
+2025-07-29T12:26:19.664+02:00  INFO 52480 --- [aeron-producer] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-29T12:26:19.664+02:00  INFO 52480 --- [aeron-producer] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 472 ms
+2025-07-29T12:26:19.775+02:00  INFO 52480 --- [aeron-producer] [           main] c.e.aeronproducer.config.AeronConfig     : Starting MediaDriver with production configuration:
+2025-07-29T12:26:19.775+02:00  INFO 52480 --- [aeron-producer] [           main] c.e.aeronproducer.config.AeronConfig     :   Directory: /tmp/aeron-producer
+2025-07-29T12:26:19.775+02:00  INFO 52480 --- [aeron-producer] [           main] c.e.aeronproducer.config.AeronConfig     :   Threading Mode: DEDICATED
+2025-07-29T12:26:19.775+02:00  INFO 52480 --- [aeron-producer] [           main] c.e.aeronproducer.config.AeronConfig     :   Term Buffer Length: 2097152 bytes
+2025-07-29T12:26:19.775+02:00  INFO 52480 --- [aeron-producer] [           main] c.e.aeronproducer.config.AeronConfig     :   Socket Send Buffer: 2097152 bytes
+2025-07-29T12:26:19.775+02:00  INFO 52480 --- [aeron-producer] [           main] c.e.aeronproducer.config.AeronConfig     :   Socket Receive Buffer: 2097152 bytes
+2025-07-29T12:26:19.804+02:00  INFO 52480 --- [aeron-producer] [           main] c.e.aeronproducer.config.AeronConfig     : Connecting to Aeron with enhanced client settings
+2025-07-29T12:26:19.808+02:00  INFO 52480 --- [aeron-producer] [           main] c.e.aeronproducer.config.AeronConfig     : Creating publication: channel=aeron:udp?endpoint=localhost:40123, streamId=1001
+1753785281887 Exception:
+io.aeron.exceptions.ClientTimeoutException: FATAL - client timeout from driver
+	at io.aeron.ClientConductor.onClientTimeout(ClientConductor.java:426)
+	at io.aeron.DriverEventsAdapter.onMessage(DriverEventsAdapter.java:247)
+	at org.agrona.concurrent.broadcast.CopyBroadcastReceiver.receive(CopyBroadcastReceiver.java:116)
+	at io.aeron.DriverEventsAdapter.receive(DriverEventsAdapter.java:68)
+	at io.aeron.ClientConductor.service(ClientConductor.java:1349)
+	at io.aeron.ClientConductor.doWork(ClientConductor.java:196)
+	at org.agrona.concurrent.AgentRunner.doWork(AgentRunner.java:304)
+	at org.agrona.concurrent.AgentRunner.workLoop(AgentRunner.java:296)
+	at org.agrona.concurrent.AgentRunner.run(AgentRunner.java:162)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+1753785281889 Exception:
+org.agrona.concurrent.AgentTerminationException
+	at io.aeron.ClientConductor.doWork(ClientConductor.java:193)
+	at org.agrona.concurrent.AgentRunner.doWork(AgentRunner.java:304)
+	at org.agrona.concurrent.AgentRunner.workLoop(AgentRunner.java:296)
+	at org.agrona.concurrent.AgentRunner.run(AgentRunner.java:162)
+	at java.base/java.lang.Thread.run(Thread.java:1583)

@@ -1,0 +1,65 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: aeron-producer
+  main:
+    allow-bean-definition-overriding: true
+  retry:
+    enabled: true
+
+logging:
+  level:
+    com.example.aeronproducer: DEBUG
+
+alphavantage:
+  api:
+    key: 01UO4V6XJWFAS4KO
+  stocks:
+    symbols: AAPL,GOOGL,MSFT,TSLA,AMZN
+    fetch-interval: 60000
+
+finnhub:
+  api:
+    key: d1u0sn9r01qt0evdjk40d1u0sn9r01qt0evdjk4g
+  symbols: AAPL,MSFT,TSLA,GOOGL,AMZN
+  websocket:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+aeron:
+  media-driver:
+    dir: /tmp/aeron-producer
+    threading-mode: 3  # DEDICATED
+    conductor-idle-strategy-max-spins: 20
+    sender-idle-strategy-max-spins: 20
+    receiver-idle-strategy-max-spins: 20
+    term-buffer-sparse-file-length: 67108864  # 64MB
+    publication-term-buffer-length: 2097152   # 2MB
+    ipc-term-buffer-length: 2097152           # 2MB
+    client-liveness-timeout-ns: 10000000000   # 10 seconds
+    publication-linger-timeout-ns: 5000000000 # 5 seconds
+    socket-sndbuf-length: 2097152             # 2MB
+    socket-rcvbuf-length: 2097152             # 2MB
+    enable-experimental-features: false
+    print-configuration-on-start: true
+    warnings-enabled: true
+  publication:
+    channel: aeron:udp?endpoint=localhost:40123
+    stream-id: 1001
+  producer:
+    auto-send: false
+    stock-data: true

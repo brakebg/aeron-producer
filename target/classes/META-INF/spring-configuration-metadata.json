@@ -1,0 +1,144 @@
+{
+  "groups": [
+    {
+      "name": "aeron",
+      "type": "com.example.aeronproducer.config.AeronProperties",
+      "sourceType": "com.example.aeronproducer.config.AeronProperties"
+    },
+    {
+      "name": "aeron.media-driver",
+      "type": "com.example.aeronproducer.config.AeronProperties$MediaDriver",
+      "sourceType": "com.example.aeronproducer.config.AeronProperties",
+      "sourceMethod": "getMediaDriver()"
+    },
+    {
+      "name": "aeron.producer",
+      "type": "com.example.aeronproducer.config.AeronProperties$Producer",
+      "sourceType": "com.example.aeronproducer.config.AeronProperties",
+      "sourceMethod": "getProducer()"
+    },
+    {
+      "name": "aeron.publication",
+      "type": "com.example.aeronproducer.config.AeronProperties$Publication",
+      "sourceType": "com.example.aeronproducer.config.AeronProperties",
+      "sourceMethod": "getPublication()"
+    }
+  ],
+  "properties": [
+    {
+      "name": "aeron.media-driver.client-liveness-timeout-ns",
+      "type": "java.lang.Long",
+      "sourceType": "com.example.aeronproducer.config.AeronProperties$MediaDriver",
+      "defaultValue": 10000000000
+    },
+    {
+      "name": "aeron.media-driver.conductor-idle-strategy-max-spins",
+      "type": "java.lang.Long",
+      "sourceType": "com.example.aeronproducer.config.AeronProperties$MediaDriver",
+      "defaultValue": 20
+    },
+    {
+      "name": "aeron.media-driver.dir",
+      "type": "java.lang.String",
+      "sourceType": "com.example.aeronproducer.config.AeronProperties$MediaDriver",
+      "defaultValue": "\/tmp\/aeron-producer"
+    },
+    {
+      "name": "aeron.media-driver.enable-experimental-features",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.example.aeronproducer.config.AeronProperties$MediaDriver",
+      "defaultValue": false
+    },
+    {
+      "name": "aeron.media-driver.ipc-term-buffer-length",
+      "type": "java.lang.Integer",
+      "sourceType": "com.example.aeronproducer.config.AeronProperties$MediaDriver",
+      "defaultValue": 0
+    },
+    {
+      "name": "aeron.media-driver.print-configuration-on-start",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.example.aeronproducer.config.AeronProperties$MediaDriver",
+      "defaultValue": true
+    },
+    {
+      "name": "aeron.media-driver.publication-linger-timeout-ns",
+      "type": "java.lang.Long",
+      "sourceType": "com.example.aeronproducer.config.AeronProperties$MediaDriver",
+      "defaultValue": 5000000000
+    },
+    {
+      "name": "aeron.media-driver.publication-term-buffer-length",
+      "type": "java.lang.Integer",
+      "sourceType": "com.example.aeronproducer.config.AeronProperties$MediaDriver",
+      "defaultValue": 0
+    },
+    {
+      "name": "aeron.media-driver.receiver-idle-strategy-max-spins",
+      "type": "java.lang.Long",
+      "sourceType": "com.example.aeronproducer.config.AeronProperties$MediaDriver",
+      "defaultValue": 20
+    },
+    {
+      "name": "aeron.media-driver.sender-idle-strategy-max-spins",
+      "type": "java.lang.Long",
+      "sourceType": "com.example.aeronproducer.config.AeronProperties$MediaDriver",
+      "defaultValue": 20
+    },
+    {
+      "name": "aeron.media-driver.socket-rcvbuf-length",
+      "type": "java.lang.Integer",
+      "sourceType": "com.example.aeronproducer.config.AeronProperties$MediaDriver",
+      "defaultValue": 0
+    },
+    {
+      "name": "aeron.media-driver.socket-sndbuf-length",
+      "type": "java.lang.Integer",
+      "sourceType": "com.example.aeronproducer.config.AeronProperties$MediaDriver",
+      "defaultValue": 0
+    },
+    {
+      "name": "aeron.media-driver.term-buffer-sparse-file-length",
+      "type": "java.lang.Integer",
+      "sourceType": "com.example.aeronproducer.config.AeronProperties$MediaDriver",
+      "defaultValue": 0
+    },
+    {
+      "name": "aeron.media-driver.threading-mode",
+      "type": "java.lang.Integer",
+      "sourceType": "com.example.aeronproducer.config.AeronProperties$MediaDriver",
+      "defaultValue": 3
+    },
+    {
+      "name": "aeron.media-driver.warnings-enabled",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.example.aeronproducer.config.AeronProperties$MediaDriver",
+      "defaultValue": true
+    },
+    {
+      "name": "aeron.producer.auto-send",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.example.aeronproducer.config.AeronProperties$Producer",
+      "defaultValue": false
+    },
+    {
+      "name": "aeron.producer.stock-data",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.example.aeronproducer.config.AeronProperties$Producer",
+      "defaultValue": true
+    },
+    {
+      "name": "aeron.publication.channel",
+      "type": "java.lang.String",
+      "sourceType": "com.example.aeronproducer.config.AeronProperties$Publication",
+      "defaultValue": "aeron:udp?endpoint=localhost:40123"
+    },
+    {
+      "name": "aeron.publication.stream-id",
+      "type": "java.lang.Integer",
+      "sourceType": "com.example.aeronproducer.config.AeronProperties$Publication",
+      "defaultValue": 1001
+    }
+  ],
+  "hints": []
+}

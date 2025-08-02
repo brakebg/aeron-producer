@@ -1,0 +1,90 @@
+groups:
+  - name: aeron_latency_alerts
+    rules:
+      # High end-to-end latency alert
+      - alert: HighEndToEndLatency
+        expr: (rate(aeron_consumer_end_to_end_latency_seconds_sum[1m]) / rate(aeron_consumer_end_to_end_latency_seconds_count[1m])) * 1000000 > 1000
+        for: 5s
+        labels:
+          severity: warning
+          service: aeron-consumer
+        annotations:
+          summary: "High end-to-end latency detected"
+          description: "End-to-end latency is {{ $value }}μs, which is above the 1000μs threshold"
+
+      # Aeron publication latency alert
+      - alert: HighAeronPublicationLatency
+        expr: (rate(aeron_producer_publication_latency_seconds_sum[1m]) / rate(aeron_producer_publication_latency_seconds_count[1m])) * 1000000 > 500
+        for: 5s
+        labels:
+          severity: warning
+          service: aeron-producer
+        annotations:
+          summary: "High Aeron publication latency detected"
+          description: "Aeron publication latency is {{ $value }}μs, which is above the 500μs threshold"
+
+      # Message processing errors
+      - alert: HighMessageProcessingErrors
+        expr: rate(aeron_consumer_processing_errors_total[1m]) > 0.1
+        for: 10s
+        labels:
+          severity: critical
+          service: aeron-consumer
+        annotations:
+          summary: "High message processing error rate"
+          description: "Message processing error rate is {{ $value }} errors/sec"
+
+      # Publication errors
+      - alert: HighPublicationErrors
+        expr: rate(aeron_producer_publication_errors_total[1m]) > 0.1
+        for: 10s
+        labels:
+          severity: critical
+          service: aeron-producer
+        annotations:
+          summary: "High publication error rate"
+          description: "Publication error rate is {{ $value }} errors/sec"
+
+      # No messages being processed
+      - alert: NoMessagesReceived
+        expr: rate(aeron_consumer_messages_received_total[2m]) == 0
+        for: 30s
+        labels:
+          severity: warning
+          service: aeron-consumer
+        annotations:
+          summary: "No messages being received"
+          description: "Consumer has not received any messages for 30 seconds"
+
+      # High message queue depth
+      - alert: HighMessageQueueDepth
+        expr: aeron_consumer_messages_queue_size > 100
+        for: 15s
+        labels:
+          severity: warning
+          service: aeron-consumer
+        annotations:
+          summary: "High message queue depth"
+          description: "Message queue depth is {{ $value }}, indicating potential backpressure"
+
+      # WebSocket connection issues
+      - alert: NoWebSocketConnections
+        expr: aeron_consumer_websocket_connections_current == 0
+        for: 1m
+        labels:
+          severity: info
+          service: aeron-consumer
+        annotations:
+          summary: "No WebSocket connections"
+          description: "No active WebSocket connections to the dashboard"
+
+      # High WebSocket broadcast errors
+      - alert: HighWebSocketBroadcastErrors
+        expr: rate(aeron_consumer_websocket_broadcast_errors_total[1m]) > 0.05
+        for: 15s
+        labels:
+          severity: warning
+          service: aeron-consumer
+        annotations:
+          summary: "High WebSocket broadcast error rate"
+          description: "WebSocket broadcast error rate is {{ $value }} errors/sec"

@@ -1,0 +1,52 @@
+global:
+  scrape_interval: 1s  # High frequency for low-latency monitoring
+  evaluation_interval: 1s
+  
+  # Attach these labels to any time series or alerts when communicating with
+  # external systems (federation, remote storage, Alertmanager).
+  external_labels:
+    monitor: 'aeron-latency-monitor'
+
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+scrape_configs:
+  # Aeron Producer application
+  - job_name: 'aeron-producer'
+    static_configs:
+      - targets: ['host.docker.internal:8080']
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 100ms  # Ultra high frequency for latency monitoring
+    scrape_timeout: 50ms
+
+  # Aeron Consumer application  
+  - job_name: 'aeron-consumer'
+    static_configs:
+      - targets: ['host.docker.internal:8081']
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 100ms  # Ultra high frequency for latency monitoring
+    scrape_timeout: 50ms
+
+  # Prometheus self-monitoring
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+    scrape_interval: 5s
+
+  # Node exporter for system metrics
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+    scrape_interval: 1s
+
+# Alerting rules for latency thresholds
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          # - alertmanager:9093
+
+# Example alerting rules (uncomment and customize as needed)
+# rule_files:
+#   - "latency_alerts.yml"

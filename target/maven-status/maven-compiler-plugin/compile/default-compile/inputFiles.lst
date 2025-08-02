@@ -1,0 +1,14 @@
+/Users/yyordanov/dev/claude-training/aeron-producer/src/main/java/com/example/aeronproducer/AeronProducerApplication.java
+/Users/yyordanov/dev/claude-training/aeron-producer/src/main/java/com/example/aeronproducer/service/AlphaVantageService.java
+/Users/yyordanov/dev/claude-training/aeron-producer/src/main/java/com/example/aeronproducer/metrics/LatencyMetrics.java
+/Users/yyordanov/dev/claude-training/aeron-producer/src/main/java/com/example/aeronproducer/controller/StockController.java
+/Users/yyordanov/dev/claude-training/aeron-producer/src/main/java/com/example/aeronproducer/controller/WebSocketController.java
+/Users/yyordanov/dev/claude-training/aeron-producer/src/main/java/com/example/aeronproducer/controller/MessageController.java
+/Users/yyordanov/dev/claude-training/aeron-producer/src/main/java/com/example/aeronproducer/model/FinnhubTrade.java
+/Users/yyordanov/dev/claude-training/aeron-producer/src/main/java/com/example/aeronproducer/service/MessageProducer.java
+/Users/yyordanov/dev/claude-training/aeron-producer/src/main/java/com/example/aeronproducer/service/FinnhubWebSocketService.java
+/Users/yyordanov/dev/claude-training/aeron-producer/src/main/java/com/example/aeronproducer/config/AeronProperties.java
+/Users/yyordanov/dev/claude-training/aeron-producer/src/main/java/com/example/aeronproducer/model/StockQuote.java
+/Users/yyordanov/dev/claude-training/aeron-producer/src/main/java/com/example/aeronproducer/config/AeronConfig.java
+/Users/yyordanov/dev/claude-training/aeron-producer/src/main/java/com/example/aeronproducer/scheduler/MessageScheduler.java
+/Users/yyordanov/dev/claude-training/aeron-producer/src/main/java/com/example/aeronproducer/service/StockDataService.java
