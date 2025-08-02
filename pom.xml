@@ -20,6 +20,8 @@
     <properties>
         <java.version>21</java.version>
         <aeron.version>1.44.1</aeron.version>
+        <sonar.organization>YY</sonar.organization>
+        <sonar.projectKey>com.example:aeron-producer</sonar.projectKey>
     </properties>
 
     <dependencies>
