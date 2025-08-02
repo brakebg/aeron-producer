@@ -1,4 +1,4 @@
-name: Pull Request SonarCloud Analysis
+name: Pull Request Analysis
 
 on:
   pull_request:
@@ -6,6 +6,30 @@ on:
       - develop
 
 jobs:
+  security-scan:
+    name: Trivy Security Scan
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          exit-code: '1'
+          severity: 'CRITICAL,HIGH'
+          
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: 'trivy-results.sarif'
+
   sonarcloud:
     name: SonarCloud Analysis
     runs-on: ubuntu-latest
